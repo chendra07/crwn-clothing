@@ -42,7 +42,7 @@ class SignIn extends React.Component {
                         required 
                     />
                     <FormInput 
-                        name="Passowrd" 
+                        name="password" 
                         type="password" 
                         value={this.state.password} 
                         handleChange = {this.handleChange}
@@ -57,7 +57,7 @@ class SignIn extends React.Component {
                     </div>
                 </form>
             </div>
-        )
+        ) //last: 10 google sign up
     }
 }
 
