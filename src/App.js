@@ -2,7 +2,7 @@ import React from "react";
 import {Switch, Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {createStructuredSelector} from "reselect";
-
+import { auth, createUserProfileDocument  } from "./firebase/firebase.utils";
 //styling
 import './App.css';
 
@@ -11,7 +11,8 @@ import HomePage from "./Pages/homepage/homepage.component";
 import ShopPage from "./Pages/shop/shop.component";
 import SignInAndSignUpPage from "./Pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import Header from "./Component/header/header.component";
-import { auth, createUserProfileDocument  } from "./firebase/firebase.utils";
+import CheckoutPage from "./Pages/checkout/checkout.component";
+
 
 //redux
 import {setCurrentUser} from "./redux/user/user.actions";
@@ -52,6 +53,7 @@ componentWillUnmount() {
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
           <Route exact path="/signInAndSignUp" render={() => this.props.currentUser ? (<Redirect to="/"/>) : <SignInAndSignUpPage/>} />
+          <Route exact path="/checkout" component={CheckoutPage} />
         </Switch>
       </div>
     );
