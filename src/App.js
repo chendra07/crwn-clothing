@@ -2,7 +2,7 @@ import React from "react";
 import {Switch, Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {createStructuredSelector} from "reselect";
-import { auth, createUserProfileDocument  } from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 //styling
 import './App.css';
 
@@ -17,12 +17,14 @@ import CheckoutPage from "./Pages/checkout/checkout.component";
 //redux
 import {setCurrentUser} from "./redux/user/user.actions";
 import {selectCurrentUser} from "./redux/user/user.selector";
+import {selectCollectionForPreview} from "./redux/shop/shop.selectors";
 
 class App extends React.Component {
 unsubscribeFromAuth = null
 
 componentDidMount() {
   const {setCurrentUser} = this.props;
+
 
   this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
     if(userAuth){
@@ -34,10 +36,9 @@ componentDidMount() {
           });
         });
         // console.log(this.state);
-    }else{
-      setCurrentUser(userAuth);
     }
-    // console.log(user);
+    setCurrentUser(userAuth);
+    // addCollectionAndDocuments("collections", collectionArray.map(({title, items}) => ({title, items})));
   });
 }
 
