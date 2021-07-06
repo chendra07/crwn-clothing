@@ -68,6 +68,7 @@ const config = {
       accumulator[collection.title.toLowerCase()] = collection;
       return accumulator;
     }, {});
+  }
 
   firebase.initializeApp(config);
 
